@@ -78,9 +78,36 @@ public class TemplateRetryServiceTest {
         log.info("Retry # is: {}", counter.get() );
         assertInstanceOf( BarException.class ,ex);
         assertThat(counter.get()).isEqualTo(1);
-
-
-
     }
+
+    @Test
+    public void doUppercaseActionWithFooException2() throws Throwable {
+
+        log.info("");
+        RetryTemplate retryTemplate =RetryTemplate.builder()
+                                                    .exponentialBackoff(500L, 2, 5000L)
+                                                    // .maxAttempts(3)
+                                                    .retryOn(FooException.class)
+                                                    .build();
+
+        AtomicInteger counter = new AtomicInteger(0);
+
+        RuntimeException ex = assertThrows(FooException.class, () -> 
+                                        retryTemplate.execute(new RetryCallback<String,Throwable>() {
+
+                                            @Override
+                                            public String doWithRetry(RetryContext context) throws Throwable {
+                                                counter.incrementAndGet();
+                                                return templateRetryService.doUppercaseActionWithFooException("test");
+                                            }
+
+                                        })
+                                );
+        
+        log.info("Retry # is: {}", counter.get() );
+        assertInstanceOf( FooException.class ,ex);
+        assertThat(counter.get()).isEqualTo(3);
+    }
+
 
 }
