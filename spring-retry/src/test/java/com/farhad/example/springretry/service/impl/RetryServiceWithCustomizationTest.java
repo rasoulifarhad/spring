@@ -31,7 +31,7 @@ public class RetryServiceWithCustomizationTest {
     }
 
     @Test
-    public void tt() {
+    public void doUppercaseActionWithBarExceptionTest() {
 
         RuntimeException ex = assertThrows(BarException.class, () -> 
                                                         retryServiceWithCustomization.doUppercaseActionWithBarException("test") );
