@@ -12,14 +12,14 @@ public class RetryableServiceImpl implements RetryableService {
     
     @Override
     public String doUppercaseActionWithFooException(String arg) {
-        log.info("Throw FooException in methode {} ","doUppercaseActionWithFooException");
+        log.info("Throw FooException in methode {}() ","doUppercaseActionWithFooException");
         throw new FooException();
         // return arg.toUpperCase();
     }
 
     @Override
     public String doUppercaseActionWithBarException(String arg) {
-        log.info("Throw BarException in methode {} ","doUppercaseActionWithBarException");
+        log.info("Throw BarException in methode {}() ","doUppercaseActionWithBarException");
         throw new BarException();
         // return arg.toUpperCase();
     }

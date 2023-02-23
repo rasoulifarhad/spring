@@ -1,4 +1,4 @@
-package com.farhad.example.retry;
+package com.farhad.example.springretry;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
