@@ -20,7 +20,7 @@ public class RetryableWithRecoverServiceTest {
     private RetryableWithRecoverService retryableWithRecoverService;
 
     @Test
-    public void tt() {
+    public void doUppercaseActionWithRecoveryTest() {
         log.info("");
         String result = retryableWithRecoverService.doUppercaseActionWithRecovery("test");
 
